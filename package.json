@@ -1,9 +1,9 @@
-
 {
   "name": "my-diary",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,14 +14,13 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-"scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "runboth": "concurrently \"npm start\" \"cd ../my-diary-backend && nodemon ./index.js\""
-},
-
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "runboth": "concurrently \"npm start\" \"cd ../my-diary-backend && nodemon ./index.js\""
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
