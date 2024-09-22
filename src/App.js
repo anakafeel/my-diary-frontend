@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <div className="container my-3">
             <Routes>
               <Route exact path="/login" element={<Login />}></Route>
+              <Route exact path="/signup" element={<Signup />}></Route>
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/About" element={<About />}></Route>
             </Routes>
