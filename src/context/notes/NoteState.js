@@ -9,11 +9,18 @@ const NoteState = (props) => {
   // Get all Notes
   const getNotes = async () => {
     // API Call 
+    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
+
+    if (!token) {
+      console.error("No token found! User needs to log in.");
+      return;
+    }
+
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZlYjMzNzNjMDZjZjk4MzE0NjhjYjdkIn0sImlhdCI6MTcyNjY5NjQ1OX0.Sf2_wAVB3lrNqdqSVS_YRlxApT36Ae058AQAJl4msyE"
+        "auth-token": token
       }
     });
     const json = await response.json() 
@@ -24,11 +31,12 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag) => {
     // TODO: API Call
     // API Call 
+    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZlYjMzNzNjMDZjZjk4MzE0NjhjYjdkIn0sImlhdCI6MTcyNjY5NjQ1OX0.Sf2_wAVB3lrNqdqSVS_YRlxApT36Ae058AQAJl4msyE"
+        "auth-token": token
       },
       body: JSON.stringify({title, description, tag})
     });
@@ -40,11 +48,12 @@ const NoteState = (props) => {
   // Delete a Note
   const deleteNote = async (id) => {
     // API Call
+    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZlYjMzNzNjMDZjZjk4MzE0NjhjYjdkIn0sImlhdCI6MTcyNjY5NjQ1OX0.Sf2_wAVB3lrNqdqSVS_YRlxApT36Ae058AQAJl4msyE"
+        "auth-token": token
       }
     });
     response.json(); 
@@ -55,11 +64,12 @@ const NoteState = (props) => {
   // Edit a Note
   const editNote = async (id, title, description, tag) => {
     // API Call 
+    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZlYjMzNzNjMDZjZjk4MzE0NjhjYjdkIn0sImlhdCI6MTcyNjY5NjQ1OX0.Sf2_wAVB3lrNqdqSVS_YRlxApT36Ae058AQAJl4msyE"
+        "auth-token": token
       },
       body: JSON.stringify({title, description, tag})
     });

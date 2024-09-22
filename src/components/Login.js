@@ -17,9 +17,9 @@ const Login = (props) => {
         const json = await response.json()
         console.log(json);
         if(json.success){
-            localStorage.setItem('token' , json.authtoken);
-            navigate("/");
+            localStorage.setItem('token' , json.token);
             props.showAlert("Signed in Successfully","success");
+            navigate("/");
             }
             else{
                 props.showAlert("Invalid credentials","danger");
@@ -31,9 +31,10 @@ const Login = (props) => {
       };
 
   return (
-    <div>
+    <div className="mt-2">
+      <h2 className="my-2">Login with your account details</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="my-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
           </label>
