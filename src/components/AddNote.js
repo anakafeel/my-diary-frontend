@@ -13,7 +13,7 @@ const AddNote = () => {
     setNote({ title: "", description: "", tag: "" });
   };
 
-  /* (using spread operator ) only note is going to remain and the properties after the comma are either gonna be added or updated */
+  /* (using spread operator )only note is going to remain and the properties after the comma are either gonna be added or updated */
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
