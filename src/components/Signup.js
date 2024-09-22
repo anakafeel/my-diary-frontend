@@ -33,10 +33,9 @@ const Signup = (props) => {
       };
 
   return (
-    <div className="mt-2">
-      <h2 className="my-2">Signup to join My-Diary</h2>
+ <div className="container">
       <form onSubmit={handleSubmit}>
-        <div className="my-3">
+        <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Name
           </label>
