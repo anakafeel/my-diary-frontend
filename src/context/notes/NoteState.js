@@ -9,7 +9,7 @@ const NoteState = (props) => {
   // Get all Notes
   const getNotes = async () => {
     // API Call 
-    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
+    const token = localStorage.getItem('token'); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
 
     if (!token) {
       console.error("No token found! User needs to log in.");
@@ -31,7 +31,7 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag) => {
     // TODO: API Call
     // API Call 
-    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
+    const token = localStorage.getItem('token'); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: 'POST',
       headers: {
@@ -48,7 +48,7 @@ const NoteState = (props) => {
   // Delete a Note
   const deleteNote = async (id) => {
     // API Call
-    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
+    const token = localStorage.getItem('token'); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: 'DELETE',
       headers: {
@@ -64,7 +64,7 @@ const NoteState = (props) => {
   // Edit a Note
   const editNote = async (id, title, description, tag) => {
     // API Call 
-    const token = localStorage.getItem("token"); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
+    const token = localStorage.getItem('token'); /* TO AVOID HARDCODING AND IMPROVE SECURITY */
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: 'PUT',
       headers: {
