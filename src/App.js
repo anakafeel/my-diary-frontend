@@ -29,7 +29,6 @@ function App() {
           <Navbar />
           <Alert alert={alert}/>
           <div className="container">
-
           <div className="container my-3">
             <Routes>
               <Route exact path="/login"  element={<Login showAlert={showAlert}/>}></Route>

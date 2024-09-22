@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
+import {useNavigate} from 'react-router-dom';
 
 const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
+  let navigate = useNavigate()
 
   const [note, setNote] = useState({
     id: "",
@@ -23,7 +25,8 @@ const Notes = (props) => {
     });
     
   };
-
+  
+ /* (using spread operator )only note is going to remain and the properties after the comma are either gonna be added or updated */
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
@@ -34,8 +37,13 @@ const Notes = (props) => {
   };
 
   useEffect(() => {
-    getNotes();
-  }, [getNotes]);
+
+    if (localStorage.getItem('token')) {
+      getNotes(); 
+    } else {
+      navigate("/login"); // Redirect to login if no token
+    }
+  }, [getNotes, navigate]);
 
   return (
     <>
