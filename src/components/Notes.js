@@ -3,26 +3,33 @@ import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 
-
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
 
-
-  const [note, setNote] = useState({id: "", etitle: "", edescription: "", etag: ""})
+  const [note, setNote] = useState({
+    id: "",
+    etitle: "",
+    edescription: "",
+    etag: "",
+  });
 
   const handleUpdateNote = (currentNote) => {
-    setNote({id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag:currentNote.tag})
+    setNote({
+      id: currentNote._id,
+      etitle: currentNote.title,
+      edescription: currentNote.description,
+      etag: currentNote.tag,
+    });
   };
 
-  const onChange = (e)=>{
-    setNote({...note, [e.target.name]: e.target.value})
-}
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
 
-
-  const handleClick = (e)=>{ 
-    editNote(note.id, note.etitle, note.edescription, note.etag)
-}
+  const handleClick = (e) => {
+    editNote(note.id, note.etitle, note.edescription, note.etag);
+  };
 
   useEffect(() => {
     getNotes();
@@ -33,6 +40,9 @@ const Notes = () => {
       <AddNote />
       <div className="row my-3">
         <h2>Your Notes:</h2>
+        <div className="container mx-2">
+          {notes.length === 0 && "You Have No notes to display"}
+        </div>
         {notes.map((note) => {
           return (
             <NoteItem
@@ -43,13 +53,7 @@ const Notes = () => {
           );
         })}
       </div>
-        {/* notes buttons */}
-        
 
-
-
-
-      
       {/* Modal structure */}
       <div
         className="modal fade"
@@ -118,7 +122,6 @@ const Notes = () => {
                     required
                   />
                 </div>
-
               </form>
             </div>
             <div className="modal-footer">
@@ -130,7 +133,9 @@ const Notes = () => {
                 Close
               </button>
               <button
-              disabled={note.etitle.length<5 || note.edescription.length<5}
+                disabled={
+                  note.etitle.length < 5 || note.edescription.length < 5
+                }
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
