@@ -1,45 +1,60 @@
 import React, { useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-    const [credentials, setcredentials] = useState({email: "", password: ""})
-    let navigate = useNavigate() /* TO REDIRECT */
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  let navigate = useNavigate(); // TO REDIRECT
 
-    const handleSubmit = async(e)=>{
-        e.preventDefault() /* to prevent reloading of page  */
-        const response = await fetch("http://localhost:5000/api/auth/login",{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({email: credentials.email, password: credentials.password})
-        });
-        const json = await response.json()
-        console.log(json);
-        if(json.success){
-            localStorage.setItem('token' , json.token);
-            props.showAlert("Signed in Successfully","success");
-            navigate("/");
-            }
-            else{
-                props.showAlert("Invalid credentials","danger");
-            }
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent reloading of page
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password,
+        }),
+      });
+
+      // Check if the response is ok
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const json = await response.json();
+      console.log(json); // Log the response for debugging
+
+      if (json.success) {
+        localStorage.setItem("token", json.token);
+        props.showAlert("Signed in Successfully", "success");
+        navigate("/");
+      } else {
+        props.showAlert("Invalid credentials", "danger");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      props.showAlert("An error occurred. Please try again.", "danger");
     }
+  };
 
-    const onChange = (e) => {
-        setcredentials({ ...credentials, [e.target.name]: e.target.value });
-      };
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="mt-2">
       <h2 className="my-2">Login with your account details</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="email" className="form-label">
             Email address
           </label>
           <input
-          onChange={onChange}
+            onChange={onChange}
             type="email"
             className="form-control"
             id="email"
@@ -52,11 +67,11 @@ const Login = (props) => {
           </div>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
+          <label htmlFor="password" className="form-label">
             Password
           </label>
           <input
-          onChange={onChange}
+            onChange={onChange}
             type="password"
             value={credentials.password}
             className="form-control"
@@ -64,7 +79,7 @@ const Login = (props) => {
             name="password"
           />
         </div>
-        <button type="submit" className="btn btn-primary" >
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
