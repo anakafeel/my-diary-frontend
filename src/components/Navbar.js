@@ -15,15 +15,15 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <motion.div 
-                    initial={{ x: -200 }}
-                    animate={{ x: 0 }}
-                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-                    transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
+          <motion.div
+            initial={{ x: -200 }}
+            animate={{ x: 0 }}
+            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+            transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
           >
-          <Link className="navbar-brand" to="#">
-            My-Diary
-          </Link>
+            <Link className="navbar-brand" to="#">
+              My-Diary
+            </Link>
           </motion.div>
           <button
             className="navbar-toggler"
@@ -40,10 +40,10 @@ const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <motion.li
                 className="nav-item"
-                initial={{ y: -200 }}
-                animate={{ y: 0 }}
+                initial={{ x: -200 }}
+                animate={{ x: 0 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                 transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
-                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
               >
                 <Link
                   className={`nav-link ${
@@ -57,12 +57,11 @@ const Navbar = () => {
               </motion.li>
               <motion.li
                 className="nav-item"
-                initial={{ y: -200 }}
-                animate={{ y: 0 }}
-                transition={{ type: "spring", delay: 0.7, duration: 1.4 }}
+                initial={{ x: -200 }}
+                animate={{ x: 0 }}
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
               >
-                motion.
                 <Link
                   className={`nav-link ${
                     location.pathname === "/about" ? "active" : ""
@@ -74,26 +73,33 @@ const Navbar = () => {
               </motion.li>
             </ul>
             {!localStorage.getItem("token") ? (
-              <motion.form
-                className="d-flex"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Link
-                  className="btn btn-primary mx-1"
-                  to="/login"
-                  role="button"
+              <form className="d-flex">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  Login
-                </Link>
-                <Link
-                  className="btn btn-primary mx-1"
-                  to="/signup"
-                  role="button"
+                  <Link
+                    className="btn btn-primary mx-1"
+                    to="/login"
+                    role="button"
+                  >
+                    Login
+                  </Link>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  Signup
-                </Link>
-              </motion.form>
+                  <Link
+                    className="btn btn-primary mx-1"
+                    to="/signup"
+                    role="button"
+                  >
+                    Signup
+                  </Link>
+                </motion.div>
+              </form>
             ) : (
               <motion.button
                 whileHover={{ scale: 1.1 }}
