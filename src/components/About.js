@@ -14,7 +14,9 @@ const About = () => {
         </div>
       </div>
 
-      <div className="text-center mt-4">
+      <div className="text-center mt-4 mx-3 my-2"
+      style={{color: "white"}}
+      >
         <h2>Connect with Me</h2>
         <ul className="list-unstyled">
           <li>
