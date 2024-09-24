@@ -14,6 +14,7 @@ const NoteItem = (props) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className="card my-3"
+          style={{cursor: "pointer"}}
         >
           <div className="card-body">
             <h5 className="card-title">{note.title}</h5>
