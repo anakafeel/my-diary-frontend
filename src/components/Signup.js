@@ -32,7 +32,7 @@ const Signup = (props) => {
       };
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 login" style={{ padding: '2rem', minHeight: '400px' }}>
       <h2 className="my-2">Signup to join My-Diary</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">

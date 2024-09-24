@@ -47,9 +47,11 @@ const Notes = (props) => {
 
   return (
     <>
+    <div className="login" style={{ padding: '2rem', minHeight: '400px' }}>
       <AddNote showAlert={props.showAlert} />
+    </div>
       <div className="row my-3">
-        <h2>Your Notes:</h2>
+        <h2 style={{color: "white"}}>Your Notes:</h2>
         <div className="container mx-2">
           {notes.length === 0 && "You Have No notes to display"}
         </div>
