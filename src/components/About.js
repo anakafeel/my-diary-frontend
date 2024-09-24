@@ -1,6 +1,28 @@
 import React from "react";
+import { motion } from "framer-motion";
+import mongoLogo from '../mongo-svgrepo-com.png'; // Adjusted path
+import expressLogo from '../express-svgrepo-com.png'; // Adjusted path
+import reactLogo from '../react-svgrepo-com.png'; // Adjusted path
+import nodeLogo from '../node-svgrepo-com.png'; // Adjusted path
 
 const About = () => {
+  const logos = [
+    { src: mongoLogo, alt: 'MongoDB Logo' },
+    { src: expressLogo, alt: 'Express Logo' },
+    { src: reactLogo, alt: 'React Logo' },
+    { src: nodeLogo, alt: 'Node.js Logo' },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
+  };
+
+  const logoVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <div
       className="d-flex justify-content-center align-items-center"
@@ -20,6 +42,25 @@ const About = () => {
             frontend. Framer Motion is used for animations, and Bootstrap
             provides the responsive UI elements.
           </p>
+          
+          {/* Logos Container */}
+          <motion.div
+            className="d-flex justify-content-center mt-3"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {logos.map((logo, index) => (
+              <motion.img
+                key={index}
+                src={logo.src}
+                alt={logo.alt}
+                className="mx-2"
+                variants={logoVariants}
+                style={{ width: '50px', height: '50px' }} // Adjust size as needed
+              />
+            ))}
+          </motion.div>
         </div>
       </div>
 
