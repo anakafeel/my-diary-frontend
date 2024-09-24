@@ -50,3 +50,7 @@ backdrop-filter: blur(7.1px);
 border: 1px solid rgba(102, 155, 188, 0.24);
 color: white;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
