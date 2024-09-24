@@ -14,16 +14,17 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <motion.div
-          className="container-fluid"
-          initial={{ x: -200 }}
-          animate={{ x: 0 }}
-          whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-          transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
-        >
+        <div className="container-fluid">
+          <motion.div 
+                    initial={{ x: -200 }}
+                    animate={{ x: 0 }}
+                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                    transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
+          >
           <Link className="navbar-brand" to="#">
             My-Diary
           </Link>
+          </motion.div>
           <button
             className="navbar-toggler"
             type="button"
@@ -104,7 +105,7 @@ const Navbar = () => {
               </motion.button>
             )}
           </div>
-        </motion.div>
+        </div>
       </nav>
     </div>
   );

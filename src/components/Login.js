@@ -62,10 +62,8 @@ const Login = (props) => {
       style={{ padding: "2rem", minHeight: "400px" }}
     >
       <h2 className="my-2">Login with your account details</h2>
-      <motion.form
+      <form
         onSubmit={handleSubmit}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
       >
         <div className="my-3">
           <label htmlFor="email" className="form-label">
@@ -100,7 +98,7 @@ const Login = (props) => {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
-      </motion.form>
+      </form>
     </motion.div>
   );
 };
