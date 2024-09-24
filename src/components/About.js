@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-      <div className="card logn" style={{ width: "28rem" }}>
+      <div className="card login" style={{ width: "28rem" }}>
         <div className="card-body">
           <h5 className="card-title">About My Website</h5>
           <p className="card-text">
