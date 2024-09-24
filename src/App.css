@@ -38,6 +38,7 @@
 }
 body {
   background-color: #003049;
+  min-height: 100vh
 }
 
 .login{
