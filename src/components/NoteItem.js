@@ -10,12 +10,12 @@ const NoteItem = (props) => {
   return (
     <>
       <div className="col-md-3">
-        <div className="card my-3">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="card-body"
-          >
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="card my-3"
+        >
+          <div className="card-body">
             <h5 className="card-title">{note.title}</h5>
             <p className="card-text">{note.description}</p>
             <button
@@ -37,8 +37,8 @@ const NoteItem = (props) => {
             >
               <i className="fa-regular fa-pen-to-square"></i>
             </button>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </>
   );
