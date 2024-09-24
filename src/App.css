@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+body {
+  background-color: #003049;
+}
+
+login{
+  /* From https://css.glass */
+background: rgba(102, 155, 188, 0.48);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(7.1px);
+-webkit-backdrop-filter: blur(7.1px);
+border: 1px solid rgba(102, 155, 188, 0.24);
+}
