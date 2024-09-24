@@ -82,6 +82,7 @@ const NoteState = (props) => {
 
   // Edit a Note
   const editNote = async (id, title, description, tag) => {
+    // API Call 
     const authtoken = localStorage.getItem("token");
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: 'PUT',
@@ -91,15 +92,16 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag })
     });
-
+  
     if (response.ok) {
-      const updatedNote = await response.json();
-      setNotes((prevNotes) => 
+      // Optimistically update the notes state
+      const updatedNote = { _id: id, title, description, tag }; // Create the updated note object
+      setNotes(prevNotes => 
         prevNotes.map(note => (note._id === id ? updatedNote : note))
       );
     } else {
-      const errorText = await response.text();
-      console.error("Failed to edit note:", errorText);
+      // Handle the error if needed
+      console.error("Error updating note:", response.statusText);
     }
   };
 
