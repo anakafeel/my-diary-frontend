@@ -39,18 +39,19 @@ const Signup = (props) => {
   };
 
   return (
-    <motion.div className="mt-2 login" style={{ padding: "2rem", minHeight: "400px" }}
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{
-      duration: 0.8,
-      delay: 0.5,
-      ease: [0, 0.71, 0.2, 1.01],
-    }}>
+    <motion.div
+      className="mt-2 login"
+      style={{ padding: "2rem", minHeight: "400px" }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+    >
       <h2 className="my-2">Signup to join My-Diary</h2>
-      <form
-        onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <div className="my-3">
           <label htmlFor="name" className="form-label">
             Name

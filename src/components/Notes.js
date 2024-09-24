@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const [note, setNote] = useState({
     id: "",
@@ -23,23 +23,21 @@ const Notes = (props) => {
       edescription: currentNote.description,
       etag: currentNote.tag,
     });
-    
   };
-  
- /* (using spread operator )only note is going to remain and the properties after the comma are either gonna be added or updated */
+
+  /* (using spread operator )only note is going to remain and the properties after the comma are either gonna be added or updated */
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag);
-    props.showAlert("Updated Successfully","success");
+    props.showAlert("Updated Successfully", "success");
   };
 
   useEffect(() => {
-
-    if (localStorage.getItem('token')) {
-      getNotes(); 
+    if (localStorage.getItem("token")) {
+      getNotes();
     } else {
       navigate("/login"); // Redirect to login if no token
     }
@@ -47,25 +45,36 @@ const Notes = (props) => {
 
   return (
     <>
-    <div className="login" style={{ padding: '2rem', minHeight: '400px' }}>
-      <AddNote showAlert={props.showAlert} />
-    </div>
-      <div className="row my-3">
-        <h2 style={{color: "white"}}>Your Notes:</h2>
+      <div className="login" style={{ padding: "2rem", minHeight: "400px" }}>
+        <AddNote showAlert={props.showAlert} />
+      </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="row my-3"
+      >
+        <h2 style={{ color: "white" }}>Your Notes:</h2>
         <div className="container mx-2">
           {notes.length === 0 && "You Have No notes to display"}
         </div>
         {notes.map((note) => {
           return (
             <NoteItem
-            showAlert={props.showAlert}
-            key={note._id}
-            updateNote={handleUpdateNote}
-            note={note}
+              showAlert={props.showAlert}
+              key={note._id}
+              updateNote={handleUpdateNote}
+              note={note}
             />
           );
         })}
-      </div>
+      </motion.div>
 
       {/* Modal structure */}
       <div
