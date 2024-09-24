@@ -37,16 +37,32 @@
   }
 }
 body {
+  display: flex;
   background-color: #003049;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full height of the viewport */
+  margin: 0; /* Remove default margin */
+  background-color: #003049; /* Set background color */
 }
 
-.login{
-  /* From https://css.glass */
-background: rgba(102, 155, 188, 0.48);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(7.1px);
--webkit-backdrop-filter: blur(7.1px);
-border: 1px solid rgba(102, 155, 188, 0.24);
-color: white;
+.login {
+  /* Glassmorphism effect */
+  background: rgba(102, 155, 188, 0.48);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.1px);
+  -webkit-backdrop-filter: blur(7.1px);
+  border: 1px solid rgba(102, 155, 188, 0.24);
+  color: white;
+  padding: 2rem; /* Add padding inside the card */
+  width: 300px; /* Set a fixed width for the card */
+}
+
+.form-label {
+  padding: 0.5rem 0; /* Add some padding above and below the labels */
+}
+
+.input-group {
+  margin-bottom: 1rem; /* Add margin to separate input groups */
 }
