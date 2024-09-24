@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div>
-      <div class="row login">
+      <div class="row login" style={{ padding: "2rem", minHeight: "400px" }}>
         <div class="col-4">
           <nav
             id="navbar-example3"
