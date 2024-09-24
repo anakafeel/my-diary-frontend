@@ -11,7 +11,7 @@ const Navbar = () => {
   let location = useLocation();
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="#">
             My-Diary

@@ -10,6 +10,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import GradientBackground from "./components/GradientBackground";
+
 function App() {
     /* ALERT USESTATE */
     const [alert, setAlert] = useState(null);
@@ -27,6 +29,7 @@ function App() {
       <NoteState>
         <BrowserRouter>
           <Navbar />
+         <GradientBackground/>
           <Alert alert={alert}/>
           <div className="container">
           <div className="container my-3">
