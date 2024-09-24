@@ -47,6 +47,9 @@ const Notes = (props) => {
 
   return (
     <>
+    <div className="card">
+
+
       <AddNote showAlert={props.showAlert} />
       <div className="row my-3">
         <h2>Your Notes:</h2>
@@ -57,12 +60,13 @@ const Notes = (props) => {
           return (
             <NoteItem
             showAlert={props.showAlert}
-              key={note._id}
-              updateNote={handleUpdateNote}
-              note={note}
+            key={note._id}
+            updateNote={handleUpdateNote}
+            note={note}
             />
           );
         })}
+      </div>
       </div>
 
       {/* Modal structure */}

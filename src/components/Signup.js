@@ -32,7 +32,7 @@ const Signup = (props) => {
       };
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 card">
       <h2 className="my-2">Signup to join My-Diary</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">
