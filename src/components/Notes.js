@@ -54,11 +54,9 @@ const Notes = (props) => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{
           duration: 0.8,
-          delay: 0.5,
+          delay: 0.7,
           ease: [0, 0.71, 0.2, 1.01],
         }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
         className="row my-3"
       >
         <h2 style={{ color: "white" }}>Your Notes:</h2>
