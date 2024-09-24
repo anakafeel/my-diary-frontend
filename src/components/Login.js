@@ -10,16 +10,19 @@ const Login = (props) => {
     e.preventDefault(); // Prevent reloading of page
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: credentials.email,
-          password: credentials.password,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: credentials.email,
+            password: credentials.password,
+          }),
+        }
+      );
 
       // Check if the response is ok
       if (!response.ok) {
@@ -47,17 +50,23 @@ const Login = (props) => {
   };
 
   return (
-    <motion.div className="mt-2 login "
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{
-      duration: 0.8,
-      delay: 0.5,
-      ease: [0, 0.71, 0.2, 1.01],
-    }}
-     style={{ padding: '2rem', minHeight: '400px' }}>
+    <motion.div
+      className="mt-2 login "
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      style={{ padding: "2rem", minHeight: "400px" }}
+    >
       <h2 className="my-2">Login with your account details</h2>
-      <form onSubmit={handleSubmit}>
+      <motion.form
+        onSubmit={handleSubmit}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
         <div className="my-3">
           <label htmlFor="email" className="form-label">
             Email address
@@ -91,7 +100,7 @@ const Login = (props) => {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
-      </form>
+      </motion.form>
     </motion.div>
   );
 };

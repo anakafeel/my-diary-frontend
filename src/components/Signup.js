@@ -41,7 +41,11 @@ const Signup = (props) => {
   return (
     <div className="mt-2 login" style={{ padding: "2rem", minHeight: "400px" }}>
       <h2 className="my-2">Signup to join My-Diary</h2>
-      <form onSubmit={handleSubmit}>
+      <motion.form
+        onSubmit={handleSubmit}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
         <div className="my-3">
           <label htmlFor="name" className="form-label">
             Name
@@ -104,7 +108,7 @@ const Signup = (props) => {
         >
           Signup
         </motion.button>
-      </form>
+      </motion.form>
     </div>
   );
 };
