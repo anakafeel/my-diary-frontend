@@ -46,7 +46,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="mt-2 login">
+    <div className="mt-2 login " style={{ padding: '2rem', minHeight: '400px' }}>
       <h2 className="my-2">Login with your account details</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">
