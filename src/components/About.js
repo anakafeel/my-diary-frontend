@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div>
-      <div class="row">
+      <div class="row login">
         <div class="col-4">
           <nav
             id="navbar-example3"
