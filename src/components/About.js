@@ -67,9 +67,9 @@ const About = () => {
       <div className="text-center mt-4 mx-3 my-2" style={{ color: "white" }}>
         <h2>Connect with Me</h2>
         <ul className="list-unstyled" style={{ color: "white" }}>
-          <li>
+          <li style={{ color: "white" }}>
             <a
-              href="https://github.com/your-github"
+              href="https://github.com/anakafeel"
               target="_blank"
               rel="noopener noreferrer"
               className="text-dark"
@@ -77,9 +77,9 @@ const About = () => {
               <i className="fa-brands fa-github"></i> GitHub
             </a>
           </li>
-          <li>
+          <li style={{ color: "white" }}>
             <a
-              href="https://linkedin.com/in/your-linkedin"
+              href="www.linkedin.com/in/saim-hashmi-2230b6243"
               target="_blank"
               rel="noopener noreferrer"
               className="text-dark"
@@ -87,9 +87,9 @@ const About = () => {
               <i className="fa-brands fa-linkedin"></i> LinkedIn
             </a>
           </li>
-          <li>
+          <li style={{ color: "white" }}>
             <a
-              href="https://instagram.com/your-instagram"
+              href="https://www.instagram.com/anakafeel/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-dark"
