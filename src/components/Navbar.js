@@ -1,18 +1,26 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
+import { motion } from "framer-motion";
 
 const Navbar = () => {
-  let navigate = useNavigate() /* TO REDIRECT */
-  const handleLogout = ()=>{
-    localStorage.removeItem('token');
+  let navigate = useNavigate(); /* TO REDIRECT */
+  const handleLogout = () => {
+    localStorage.removeItem("token");
     navigate("/login");
-  }
+  };
   let location = useLocation();
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
+        <motion.div
+          className="container-fluid"
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}
+          whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+          transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
+        >
           <Link className="navbar-brand" to="#">
             My-Diary
           </Link>
@@ -29,7 +37,13 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <motion.li
+                className="nav-item"
+                initial={{ y: -200 }}
+                animate={{ y: 0 }}
+                transition={{ type: "spring", delay: 0.5, duration: 1.4 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+              >
                 <Link
                   className={`nav-link ${
                     location.pathname === "/" ? "active" : ""
@@ -39,8 +53,15 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-              </li>
-              <li className="nav-item">
+              </motion.li>
+              <motion.li
+                className="nav-item"
+                initial={{ y: -200 }}
+                animate={{ y: 0 }}
+                transition={{ type: "spring", delay: 0.7, duration: 1.4 }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+              >
+                motion.
                 <Link
                   className={`nav-link ${
                     location.pathname === "/about" ? "active" : ""
@@ -49,24 +70,41 @@ const Navbar = () => {
                 >
                   About
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Link
-                </Link>
-              </li>
+              </motion.li>
             </ul>
-            {!localStorage.getItem('token')?
-            <form className="d-flex">
-              <Link className="btn btn-primary mx-1" to="/login" role="button">
-                Login
-              </Link>
-              <Link className="btn btn-primary mx-1" to="/signup" role="button">
-                Signup
-              </Link>
-            </form>: <button onClick={handleLogout} className ="btn btn-danger">Logout</button>}
+            {!localStorage.getItem("token") ? (
+              <motion.form
+                className="d-flex"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Link
+                  className="btn btn-primary mx-1"
+                  to="/login"
+                  role="button"
+                >
+                  Login
+                </Link>
+                <Link
+                  className="btn btn-primary mx-1"
+                  to="/signup"
+                  role="button"
+                >
+                  Signup
+                </Link>
+              </motion.form>
+            ) : (
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={handleLogout}
+                className="btn btn-danger"
+              >
+                Logout
+              </motion.button>
+            )}
           </div>
-        </div>
+        </motion.div>
       </nav>
     </div>
   );

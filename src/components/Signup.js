@@ -1,38 +1,45 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Signup = (props) => {
-    const [credentials, setcredentials] = useState({name: "", email: "", password: "",cpassword: ""})
-    let navigate = useNavigate() /* TO REDIRECT */
+  const [credentials, setcredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
+  let navigate = useNavigate(); /* TO REDIRECT */
 
-    const handleSubmit = async (e)=>{
-        e.preventDefault();
-        const {name,email,password} = credentials;
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/createuser`,{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name,email,password})
-
-        });
-        const json = await response.json()
-        if(json.success){
-            localStorage.setItem('token' , json.token);
-            navigate("/");
-            props.showAlert("Account created successfully","success");
-            }
-            else{
-                props.showAlert("Invalid credentials","danger");
-            }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { name, email, password } = credentials;
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/auth/createuser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      }
+    );
+    const json = await response.json();
+    if (json.success) {
+      localStorage.setItem("token", json.token);
+      navigate("/");
+      props.showAlert("Account created successfully", "success");
+    } else {
+      props.showAlert("Invalid credentials", "danger");
     }
+  };
 
-        const onChange = (e) => {
-        setcredentials({ ...credentials, [e.target.name]: e.target.value });
-      };
+  const onChange = (e) => {
+    setcredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
 
   return (
-    <div className="mt-2 login" style={{ padding: '2rem', minHeight: '400px' }}>
+    <div className="mt-2 login" style={{ padding: "2rem", minHeight: "400px" }}>
       <h2 className="my-2">Signup to join My-Diary</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">
@@ -40,11 +47,10 @@ const Signup = (props) => {
             Name
           </label>
           <input
-          onChange={onChange}
+            onChange={onChange}
             type="name"
             className="form-control"
             id="name"
-         
             name="name"
             aria-describedby="emailHelp"
           />
@@ -54,11 +60,10 @@ const Signup = (props) => {
             Email address
           </label>
           <input
-          onChange={onChange}
+            onChange={onChange}
             type="email"
             className="form-control"
             id="email"
-        
             name="email"
             aria-describedby="emailHelp"
           />
@@ -68,7 +73,7 @@ const Signup = (props) => {
             Password
           </label>
           <input
-          onChange={onChange}
+            onChange={onChange}
             type="password"
             required
             minLength={5}
@@ -82,21 +87,26 @@ const Signup = (props) => {
             Confirm Password
           </label>
           <input
-          onChange={onChange}
+            onChange={onChange}
             type="password"
-          required
-          minLength={5}
+            required
+            minLength={5}
             className="form-control"
             id="cpassword"
             name="cpassword"
           />
         </div>
-        <button type="submit" className="btn btn-primary" >
+        <motion.button
+          type="submit"
+          className="btn btn-primary"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           Signup
-        </button>
+        </motion.button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -46,7 +47,15 @@ const Login = (props) => {
   };
 
   return (
-    <div className="mt-2 login " style={{ padding: '2rem', minHeight: '400px' }}>
+    <motion.div className="mt-2 login "
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{
+      duration: 0.8,
+      delay: 0.5,
+      ease: [0, 0.71, 0.2, 1.01],
+    }}
+     style={{ padding: '2rem', minHeight: '400px' }}>
       <h2 className="my-2">Login with your account details</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">
@@ -83,7 +92,7 @@ const Login = (props) => {
           Submit
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 
